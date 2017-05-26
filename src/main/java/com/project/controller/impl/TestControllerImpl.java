@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,7 +31,7 @@ public class TestControllerImpl implements TestController {
 	@Override
 	@ResponseBody
 	@RequestMapping("/save")
-	public Msg save(TestVO vo) {
+	public Msg save(@RequestBody TestVO vo) {
 		TestVO rvo = testService.save(vo);
 		return Msg.success().add(rvo);
 	}
@@ -38,7 +39,7 @@ public class TestControllerImpl implements TestController {
 	@Override
 	@ResponseBody
 	@RequestMapping("/findOne")
-	public Msg findOne(TestVO vo) {
+	public Msg findOne(@RequestBody TestVO vo) {
 		TestVO rvo = testService.findOne(vo.getId());
 		return Msg.success().add(rvo);
 	}
