@@ -12,4 +12,6 @@ public interface TestController {
 	public Msg findAll();
 	
 	public Msg count();
+	
+	public Msg findOne();
 }

@@ -13,4 +13,8 @@ public interface TestService {
 	public List<TestPO> findAll();
 	
 	public Long count();
+	
+	public TestPO save(TestPO po);
+	
+	public TestPO findOne(Long id);
 }

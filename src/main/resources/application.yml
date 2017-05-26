@@ -1,6 +1,15 @@
 server:
   port: 7901
+  context-path: /project
 spring:
+  http:  
+        encoding.charset: UTF-8  
+        encoding.enable: true  
+        encoding.force: true 
+  mvc:  
+    view:  
+            prefix: /WEB-INF/jsp/  
+            suffix: .jsp    
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/boot

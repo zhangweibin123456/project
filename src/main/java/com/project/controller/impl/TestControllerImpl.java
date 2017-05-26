@@ -14,6 +14,7 @@ import com.project.service.TestService;
 import com.project.util.Msg;
 
 @Controller
+@RequestMapping(path = "/test")
 public class TestControllerImpl implements TestController {
 
 	@Autowired
@@ -31,7 +32,7 @@ public class TestControllerImpl implements TestController {
 	@RequestMapping("/findAll")
 	public Msg findAll() {
 		List<TestPO> poList = testService.findAll();
-		return Msg.success().add("data", poList);
+		return Msg.success().add("poList",poList);
 	}
 
 	@Override
@@ -39,6 +40,14 @@ public class TestControllerImpl implements TestController {
 	@RequestMapping("/count")
 	public Msg count() {
 		return null;
+	}
+
+	@Override
+	@ResponseBody
+	@RequestMapping("/findOne")
+	public Msg findOne() {
+		TestPO po= testService.findOne(1l);
+		return Msg.success().add("test",po);
 	}
 
 }

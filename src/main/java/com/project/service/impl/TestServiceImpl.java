@@ -40,8 +40,20 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public List<TestPO> findAll() {
 		List<TestPO> list = new ArrayList<>();
-		list = testPepository.findAll(new Sort(Sort.Direction.ASC, "testid"));
+		list = testPepository.findAll();
 		return list;
+	}
+
+	@Override
+	public TestPO save(TestPO po) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TestPO findOne(Long id) {
+		TestPO po= testPepository.findOne(id);
+		return po;
 	}
 
 }
