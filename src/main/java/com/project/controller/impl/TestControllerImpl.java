@@ -48,7 +48,7 @@ public class TestControllerImpl implements TestController {
 	
 	@GetMapping("/index")
 	public String indexHtml() {
-	    return "index";
+	    return "index.jsp";
 	}
 
 }

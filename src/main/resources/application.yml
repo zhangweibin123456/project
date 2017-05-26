@@ -8,9 +8,8 @@ spring:
         encoding.force: true 
   mvc:  
     view:  
-            prefix: /WEB-INF/jsp/  
+            prefix: /WEB-INF/views/  
             suffix: .jsp    
-            static-path-pattern: /**
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/boot
