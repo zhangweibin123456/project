@@ -1,8 +1,5 @@
 package com.project.util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Msg {
 	// 状态码 200-成功 100-失败
 	private int code;
@@ -10,7 +7,7 @@ public class Msg {
 	private String msg;
 
 	// 用户要返回给浏览器的数据
-	private Map<String, Object> data = new HashMap<String, Object>();
+	private Object data = new Object();
 
 	public static Msg success() {
 		Msg result = new Msg();
@@ -26,8 +23,8 @@ public class Msg {
 		return result;
 	}
 
-	public Msg add(String key, Object value) {
-		this.getData().put(key, value);
+	public Msg add(Object value) {
+		this.data = value;
 		return this;
 	}
 
@@ -47,13 +44,12 @@ public class Msg {
 		this.msg = msg;
 	}
 
-	public Map<String, Object> getData() {
+	public Object getData() {
 		return data;
 	}
 
-	public void setData(Map<String, Object> data) {
+	public void setData(Object data) {
 		this.data = data;
 	}
 
-	
 }

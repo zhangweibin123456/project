@@ -32,7 +32,7 @@ public class TestControllerImpl implements TestController {
 	@RequestMapping("/findAll")
 	public Msg findAll() {
 		List<TestPO> poList = testService.findAll();
-		return Msg.success().add("poList",poList);
+		return Msg.success().add(poList);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class TestControllerImpl implements TestController {
 	@RequestMapping("/findOne")
 	public Msg findOne() {
 		TestPO po= testService.findOne(1l);
-		return Msg.success().add("test",po);
+		return Msg.success().add(po);
 	}
 
 }
