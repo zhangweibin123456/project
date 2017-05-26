@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,11 @@ public class TestControllerImpl implements TestController {
 	public Msg findOne(@RequestBody TestVO vo) {
 		TestVO rvo = testService.findOne(vo.getId());
 		return Msg.success().add(rvo);
+	}
+	
+	@GetMapping("/index")
+	public String indexHtml() {
+	    return "index";
 	}
 
 }

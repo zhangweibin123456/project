@@ -10,6 +10,7 @@ spring:
     view:  
             prefix: /WEB-INF/jsp/  
             suffix: .jsp    
+            static-path-pattern: /**
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/boot
