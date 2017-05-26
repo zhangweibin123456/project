@@ -4,18 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import com.project.entity.TestPO;
-import com.project.model.Page;
+import com.project.model.TestVO;
 import com.project.repository.TestPepository;
 import com.project.service.TestService;
-
-
-
 
 @Service("testService")
 public class TestServiceImpl implements TestService {
@@ -24,36 +17,40 @@ public class TestServiceImpl implements TestService {
 	private TestPepository testPepository;
 
 	@Override
-	public List<TestPO> findAll(Page page) {
-		List<TestPO> list = new ArrayList<>();
-		Pageable pager = new PageRequest(page.getPage() - 1, page.getPageSize(), new Sort(Sort.Direction.ASC, "testid"));
-		list = testPepository.findAll(pager).getContent();
-		return list;
+	public List<TestVO> findAll() {
+		List<TestVO> voList = new ArrayList<>();
+		List<TestPO> poList = testPepository.findAll();
+		if (poList != null) {
+			for (TestPO po : poList) {
+				voList.add(this.poToVo(po));
+			}
+		}
+		return voList;
 	}
 
 	@Override
-	public Long count() {
-		Long count = testPepository.count();
-		return count;
+	public TestVO save(TestVO vo) {
+		TestPO po = testPepository.save(this.voToPo(vo));
+		return this.poToVo(po);
 	}
 
 	@Override
-	public List<TestPO> findAll() {
-		List<TestPO> list = new ArrayList<>();
-		list = testPepository.findAll();
-		return list;
+	public TestVO findOne(Long id) {
+		TestPO po = testPepository.findOne(id);
+		return this.poToVo(po);
 	}
 
-	@Override
-	public TestPO save(TestPO po) {
-		// TODO Auto-generated method stub
-		return null;
+	private TestVO poToVo(TestPO po) {
+		TestVO vo = new TestVO();
+		vo.setId(po.getId());
+		vo.setName(po.getName());
+		return vo;
 	}
 
-	@Override
-	public TestPO findOne(Long id) {
-		TestPO po= testPepository.findOne(id);
+	private TestPO voToPo(TestVO vo) {
+		TestPO po = new TestPO();
+		po.setId(vo.getId());
+		po.setName(vo.getName());
 		return po;
 	}
-
 }

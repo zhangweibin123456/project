@@ -1,17 +1,14 @@
 package com.project.controller;
 
 
-import com.project.model.Page;
+import com.project.model.TestVO;
 import com.project.util.Msg;
-
 
 public interface TestController {
 
-	public Msg findAll(Page page);
-	
 	public Msg findAll();
 	
-	public Msg count();
+	public Msg save(TestVO vo);
 	
-	public Msg findOne();
+	public Msg findOne(TestVO vo);
 }

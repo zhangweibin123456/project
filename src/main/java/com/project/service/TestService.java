@@ -2,19 +2,13 @@ package com.project.service;
 
 import java.util.List;
 
-import com.project.entity.TestPO;
-import com.project.model.Page;
-
+import com.project.model.TestVO;
 
 public interface TestService {
 
-	public List<TestPO> findAll(Page page);
+	public List<TestVO> findAll();
 	
-	public List<TestPO> findAll();
+	public TestVO save(TestVO vo);
 	
-	public Long count();
-	
-	public TestPO save(TestPO po);
-	
-	public TestPO findOne(Long id);
+	public TestVO findOne(Long id);
 }
